@@ -1,0 +1,14 @@
+{
+  "name": "candypop",
+  "version": "1.0.0",
+  "description": "Candypop is a discord bot for your server.",
+  "main": "src/candy.js",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "discord.js": "^12.5.3",
+    "glob": "^7.1.7"
+  },
+  "repository": "https://github.com/RoseAmelia/Candy",
+  "author": "Rose Amelia",
+  "license": "Apache-2.0"
+}
