@@ -1,0 +1,16 @@
+{
+    "TOKEN": "OzgwMeYwNDkYNtU1mDkyMthis.is.a.tokenpl8g.yGw9EEr39fO4i3dJmYm7pE-k0c8",
+    "PREFIX": "candy",
+    "MONGOURL": "",
+    "TEAM": ["780022308026712075"],
+    "EMBED": {
+        "COLOR": "",
+        "FOOTER": ""
+    },
+    "LOGS": {
+        "JOIN": "844985782758277120",
+        "LEAVE": "844985782758277120"
+    },
+    "INVITE": "https://discord.com/api/oauth2/authorize?client_id=780060492555092009&permissions=83209280&scope=bot",
+    "SERVER": "Made by Rose Development"
+}
