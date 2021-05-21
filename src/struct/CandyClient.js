@@ -1,6 +1,7 @@
 const { Client, Collection } = require("discord.js");
 const CommandHandler = require("./CommandHandler");
 const EventHandler = require("./EventHandler");
+const InteractDatabase = require("./InteractDatabase");
 
 class CandyClient extends Client {
     constructor() {
@@ -16,10 +17,11 @@ class CandyClient extends Client {
 
         this.error = require("../utils/CandyError");
         this.chalk = require("chalk");
-        this.settings = require("../utils/Settings");
+        this.settings = require("../utils/Settings.json");
 
         this.CommandHandler = new CommandHandler(this);
         this.EventHandler = new EventHandler(this);
+        this.InteractDatabase = new InteractDatabase();
 
         this.events = new Collection();
         this.commands = new Collection();
@@ -36,7 +38,7 @@ class CandyClient extends Client {
 
         this.CommandHandler.emit();
         this.EventHandler.emit();
-        this.settings.LOGS.JOIN
+        this.InteractDatabase.interact(this.settings.MONGOURL);
 
         this.on("message", async message => {
 
@@ -55,16 +57,18 @@ class CandyClient extends Client {
                     if (command.guildOnly === true) {
                         if (message.channel.type === "dm") return;
                     };
-                    
+
                     if (command.teamOnly === true) {
                         if (this.settings.TEAM.includes(message.author.id) === false) return;
                     };
-                    /**
-                     * @param {Client} client
-                     */
+
+                    if (command.premiumOnly === true) {
+                        
+                    };
+
                     command.execute(this, message, args);
                 }
-            } catch(error) {
+            } catch (error) {
                 console.log(error);
                 message.channel.send("Cannot execute the command due to an error");
             };
