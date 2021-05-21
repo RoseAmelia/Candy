@@ -1,7 +1,7 @@
 {
     "TOKEN": "OzgwMeYwNDkYNtU1mDkyMthis.is.a.tokenpl8g.yGw9EEr39fO4i3dJmYm7pE-k0c8",
     "PREFIX": "candy",
-    "MONGOURL": "",
+    "MONGOURL": "mongodb://localhost/rose",
     "TEAM": ["780022308026712075"],
     "EMBED": {
         "COLOR": "",
