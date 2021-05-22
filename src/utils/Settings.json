@@ -5,12 +5,13 @@
     "TEAM": ["780022308026712075"],
     "EMBED": {
         "COLOR": "",
-        "FOOTER": ""
+        "FOOTER": "Made by Rose Development"
     },
     "LOGS": {
         "JOIN": "844985782758277120",
         "LEAVE": "844985782758277120"
     },
     "INVITE": "https://discord.com/api/oauth2/authorize?client_id=780060492555092009&permissions=83209280&scope=bot",
-    "SERVER": "Made by Rose Development"
+    "GITHUB": "https://github.com/RoseAmelia/Candy",
+    "SERVER": "https://discord.gg/t9y2fpkuw5"
 }
