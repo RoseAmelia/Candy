@@ -26,6 +26,7 @@ class CandyClient extends Client {
         this.events = new Collection();
         this.commands = new Collection();
         this.aliases = new Collection();
+        this.cooldowns = new Collection();
 
     };
 
@@ -48,23 +49,44 @@ class CandyClient extends Client {
             const args = message.content.slice(this.settings.PREFIX.length).trim().split(/ +/g);
             const x = args.shift().toLowerCase();
 
+
+
             let command = this.commands.get(x);
             if (!command) command = this.commands.get(this.aliases.get(x));
 
             try {
                 if (command) {
 
-                    if (command.guildOnly === true) {
+                    if (command.guildOnly && command.guildOnly === true) {
                         if (message.channel.type === "dm") return;
                     };
 
-                    if (command.teamOnly === true) {
+                    if (command.teamOnly && command.guildOnly === true) {
                         if (this.settings.TEAM.includes(message.author.id) === false) return;
                     };
 
-                    if (command.premiumOnly === true) {
-                        
+                    if (!this.cooldowns.has(command.name)) {
+                        this.cooldowns.set(command.name, new Collection());
+                    }
+
+                    if (this.settings.TEAM.includes(message.author.id)) {
+                        return command.execute(this, message, args);
                     };
+                    
+                    const now = Date.now();
+                    const time = this.cooldowns.get(command.name);
+                    const cooldown = (command.cooldown || 3) * 1000;
+
+                    if (time.has(message.author.id)) {
+                        const expirationTime = time.get(message.author.id) + cooldown;
+
+                        if (now < expirationTime) {
+                            return;
+                        };
+                    };
+
+                    time.set(message.author.id, now);
+                    setTimeout(() => time.delete(message.author.id), cooldown);
 
                     command.execute(this, message, args);
                 }
