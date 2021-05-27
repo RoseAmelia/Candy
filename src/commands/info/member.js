@@ -20,8 +20,8 @@ module.exports = {
      */
     execute: async (client, message, args) => {
 
-        const member = message.guild.members.cache.get(args[0]) || message.member;
-        
+        const member = message.mentions.members.first() || message.member;
+
         let ack;
         if (member.hasPermission("ADMINISTRATOR")) {
             ack = "Server Admin";
