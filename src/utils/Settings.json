@@ -4,7 +4,7 @@
     "MONGOURL": "mongodb://localhost/rose",
     "TEAM": ["780022308026712075"],
     "EMBED": {
-        "COLOR": "",
+        "COLOR": "#8faeff",
         "FOOTER": "Made by Rose Development"
     },
     "LOGS": {
